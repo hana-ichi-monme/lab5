@@ -1,6 +1,7 @@
 package lab5.commands;
 
 import lab5.exceptions.CollectionIsEmptyException;
+import lab5.exceptions.IncorrectInputInScriptException;
 import lab5.exceptions.MarineNotFoundException;
 import lab5.exceptions.WrongArgumentOfCommandException;
 import lab5.tools.CollectionManager;
@@ -42,6 +43,8 @@ public class UpdateIdCommand extends AbstractCommand{
             ConsoleManager.printError("Collection is empty");
         } catch (MarineNotFoundException e) {
             ConsoleManager.printError("Marine with this id not found");
+        } catch (IncorrectInputInScriptException e) {
+            ConsoleManager.printError("Incorrect input in script");
         }
         return false;
     }

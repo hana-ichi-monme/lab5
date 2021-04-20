@@ -1,5 +1,6 @@
 package lab5.commands;
 
+import lab5.exceptions.IncorrectInputInScriptException;
 import lab5.exceptions.WrongArgumentOfCommandException;
 import lab5.tools.CollectionManager;
 import lab5.tools.ConsoleManager;
@@ -38,6 +39,8 @@ public class AddIfMinCommand extends AbstractCommand{
             }
         } catch (WrongArgumentOfCommandException e) {
             ConsoleManager.printError("Argument must be empty");
+        } catch (IncorrectInputInScriptException e) {
+            ConsoleManager.printError("Incorrect input in script");
         }
         return false;
     }

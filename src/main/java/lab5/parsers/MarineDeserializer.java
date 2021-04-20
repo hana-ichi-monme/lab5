@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Custom deserializer
+ */
 public class MarineDeserializer extends StdDeserializer<SpaceMarine> {
     public MarineDeserializer() {
         this(null);
@@ -20,6 +23,14 @@ public class MarineDeserializer extends StdDeserializer<SpaceMarine> {
         super(vc);
     }
 
+    /**
+     * Deserialize json file (string) to Space Marine
+     * @param jp Parser
+     * @param ctxt Context
+     * @return deserialized Space Marine
+     * @throws IOException Input/Output Exception
+     * @throws JsonProcessingException Exception thrown when trying to read the json tree
+     */
     @Override
     public SpaceMarine deserialize(JsonParser jp, DeserializationContext ctxt)
             throws IOException, JsonProcessingException {

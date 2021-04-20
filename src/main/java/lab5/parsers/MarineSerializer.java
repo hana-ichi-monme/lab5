@@ -11,6 +11,9 @@ import lab5.types.SpaceMarine;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Custom serializer
+ */
 public class MarineSerializer extends StdSerializer<SpaceMarine> {
 
     public MarineSerializer() {
@@ -20,7 +23,14 @@ public class MarineSerializer extends StdSerializer<SpaceMarine> {
     public MarineSerializer(Class<SpaceMarine> t) {
         super(t);
     }
-
+    /**
+     * Serialize Space Marine to json file (string)
+     * @param value Space Marine, which need to parsing
+     * @param jgen Generator json file (string)
+     * @param provider Serializer Provider
+     * @throws IOException Input/Output Exception
+     * @throws JsonProcessingException Exception thrown when trying to read the json tree
+     */
     @Override
     public void serialize(
             SpaceMarine value, JsonGenerator jgen, SerializerProvider provider)

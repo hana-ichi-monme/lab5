@@ -5,6 +5,9 @@ import lab5.commands.Command;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Manager working with Commands
+ */
 public class CommandManager {
     private List<Command> commands = new ArrayList<>();
     private Command addCommand;

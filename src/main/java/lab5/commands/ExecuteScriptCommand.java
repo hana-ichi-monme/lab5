@@ -12,7 +12,7 @@ public class ExecuteScriptCommand extends AbstractCommand{
     public boolean execute(String argument) {
         try {
             if (argument.isEmpty()) throw new WrongArgumentOfCommandException();
-            ConsoleManager.println("Execute script: '" + argument + "'...");
+            ConsoleManager.println("Execute script: '" + argument + "':");
             return true;
         } catch (WrongArgumentOfCommandException e) {
             ConsoleManager.printError("Argument must not be empty");

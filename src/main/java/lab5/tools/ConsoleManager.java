@@ -11,6 +11,9 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.Set;
 
+/**
+ * Manager working with console
+ */
 public class ConsoleManager {
     private FieldsAsker fieldsAsker;
     private Scanner scanner;
@@ -40,7 +43,9 @@ public class ConsoleManager {
             printError("No user input found!");
         }
     }
-
+    /**
+     * Mode for catching commands from file (script).
+     */
     public boolean[] scriptMode(String argument) {
         String[] userCommand;
         boolean[] commandStatus;
@@ -67,24 +72,26 @@ public class ConsoleManager {
             } while (commandStatus[0] && scriptScanner.hasNextLine());
             fieldsAsker.setUserScanner(oldScanner);
             fieldsAsker.setMode("interactive");
-            if (!commandStatus[0] && !(userCommand[0].equals("execute_script") && !userCommand[1].isEmpty()))
+            if (!commandStatus[0] && (!userCommand[0].equals("execute_script") || userCommand[1].isEmpty()))
                 ConsoleManager.printError("Проверьте скрипт на корректность введенных данных!");
             return commandStatus;
         } catch (FileNotFoundException exception) {
-            ConsoleManager.printError("Файл со скриптом не найден!");
+            ConsoleManager.printError("Script file not found");
         } catch (NoSuchElementException exception) {
-            ConsoleManager.printError("Файл со скриптом пуст!");
+            ConsoleManager.printError("Script is empty");
         } catch (ScriptRecursionException exception) {
-            ConsoleManager.printError("Скрипты не могут вызываться рекурсивно!");
-        } catch (IllegalStateException exception) {
-            ConsoleManager.printError("Непредвиденная ошибка!");
-            System.exit(0);
-        }  finally {
+            ConsoleManager.printError("Scripts can't be called recursively");
+        } finally {
             scriptSet.remove(argument);
         }
         return new boolean[]{false, false};
     }
 
+    /**
+     * Runs commands
+     * @param userCommand
+     * @return
+     */
     public boolean[] runCommand(String[] userCommand) {
         boolean isOk = false;
         boolean isExit = false;
@@ -107,8 +114,7 @@ public class ConsoleManager {
                 break;
             case "execute_script":
                 if (commandManager.executeScript(userCommand[1])) {
-                    isOk = true;
-                    scriptMode(userCommand[1]);
+                    return scriptMode(userCommand[1]);
                 }
             case "exit":
                 if (commandManager.exit(userCommand[1])) {
