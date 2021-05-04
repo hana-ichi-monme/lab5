@@ -121,6 +121,7 @@ public class ConsoleManager {
                     isExit = true;
                     isOk = true;
                 }
+                break;
             case "help":
                 if (commandManager.help(userCommand[1]))
                     isOk = true;
