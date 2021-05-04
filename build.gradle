@@ -1,13 +1,21 @@
 plugins {
     id 'java'
 }
-
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+jar {
+    manifest {
+        attributes 'Main-Class': 'lab5.run.Run'
+        attributes 'Class-Path': 'jackson-annotations-2.7.0.jar;jackson-core-2.7.4.jar;jackson-databind-2.7.4gra.jar'
+    }
+}
 group 'org.example'
 version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
+
 
 dependencies {
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
