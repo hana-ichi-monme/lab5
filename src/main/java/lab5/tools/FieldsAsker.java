@@ -167,6 +167,11 @@ public class FieldsAsker {
     public AstartesCategory askCategory() throws IncorrectInputInScriptException {
         String str;
         AstartesCategory category;
+        ConsoleManager.println("List of Categories:\n" +
+                        "APOTHECARY,\n" +
+                        "ASSAULT,\n" +
+                        "TACTICAL,\n" +
+                        "TERMINATOR.");
         while (true) {
             try {
                 ConsoleManager.println("Enter a category");
@@ -191,6 +196,10 @@ public class FieldsAsker {
     public MeleeWeapon askMeleeWeapon() throws IncorrectInputInScriptException {
         String str;
         MeleeWeapon weapon;
+        ConsoleManager.println("List of Melee Weapons:\n" +
+                        "CHAIN_AXE,\n" +
+                        "CHAIN_SWORD,\n" +
+                        "MANREAPER.");
         while (true) {
             try {
                 ConsoleManager.println("Enter a melee weapon");
