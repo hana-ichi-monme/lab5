@@ -11,11 +11,9 @@ import java.util.Deque;
 
 public class ShowCommand extends AbstractCommand{
     private CollectionManager collectionManager;
-    private Shower shower;
-    public ShowCommand(CollectionManager collectionManager, Shower shower) {
+    public ShowCommand(CollectionManager collectionManager) {
         super("show", "shows all collection elements in string format");
         this.collectionManager = collectionManager;
-        this.shower = shower;
     }
 
     @Override
@@ -26,7 +24,7 @@ public class ShowCommand extends AbstractCommand{
             if (collectionManager.collectionIsEmpty())
                 throw new CollectionIsEmptyException();
             Deque<SpaceMarine> collection = collectionManager.getMarineCollection();
-            collection.forEach(marine -> shower.show(marine));
+            collection.forEach(Shower::show);
             return true;
         } catch (WrongArgumentOfCommandException e) {
             ConsoleManager.printError("Argument must be empty");

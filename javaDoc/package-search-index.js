@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"lab5.commands"},{"l":"lab5.exceptions"},{"l":"lab5.parsers"},{"l":"lab5.run"},{"l":"lab5.tools"},{"l":"lab5.types"}];updateSearchResults();

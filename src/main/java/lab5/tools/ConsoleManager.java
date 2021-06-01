@@ -73,7 +73,7 @@ public class ConsoleManager {
             fieldsAsker.setUserScanner(oldScanner);
             fieldsAsker.setMode("interactive");
             if (!commandStatus[0] && (!userCommand[0].equals("execute_script") || userCommand[1].isEmpty()))
-                ConsoleManager.printError("Проверьте скрипт на корректность введенных данных!");
+                ConsoleManager.printError("Incorrect input in script");
             return commandStatus;
         } catch (FileNotFoundException exception) {
             ConsoleManager.printError("Script file not found");
@@ -89,8 +89,8 @@ public class ConsoleManager {
 
     /**
      * Runs commands
-     * @param userCommand
-     * @return
+     * @param userCommand user command
+     * @return command status
      */
     public boolean[] runCommand(String[] userCommand) {
         boolean isOk = false;

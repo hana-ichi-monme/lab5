@@ -204,11 +204,8 @@ public class CollectionManager {
     /**
      * Remove all Marines, who is greater than this Marine
      * @param spaceMarine Marine
-     * @throws CollectionIsEmptyException Collection must be not empty
      */
-    public void removeGreater(SpaceMarine spaceMarine) throws CollectionIsEmptyException {
-        if (collectionIsEmpty())
-            throw new CollectionIsEmptyException();
+    public void removeGreater(SpaceMarine spaceMarine) {
         marineCollection.removeIf(marine -> marine.compareTo(spaceMarine) > 0);
     }
 

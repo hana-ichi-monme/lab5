@@ -4,6 +4,7 @@ import lab5.exceptions.CollectionIsEmptyException;
 import lab5.exceptions.WrongArgumentOfCommandException;
 import lab5.tools.CollectionManager;
 import lab5.tools.ConsoleManager;
+import lab5.tools.Shower;
 
 public class MaxByHealthCommand extends AbstractCommand{
     private CollectionManager collectionManager;
@@ -19,7 +20,7 @@ public class MaxByHealthCommand extends AbstractCommand{
                 throw new WrongArgumentOfCommandException();
             if (collectionManager.collectionIsEmpty())
                 throw new CollectionIsEmptyException();
-            ConsoleManager.println(collectionManager.maxByHealth());
+            Shower.show(collectionManager.maxByHealth());
             return true;
         } catch (WrongArgumentOfCommandException e) {
             ConsoleManager.printError("Argument must be empty");

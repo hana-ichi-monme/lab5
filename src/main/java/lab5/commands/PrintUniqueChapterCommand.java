@@ -11,11 +11,9 @@ import java.util.Set;
 
 public class PrintUniqueChapterCommand extends AbstractCommand{
     private CollectionManager collectionManager;
-    private Shower shower;
-    public PrintUniqueChapterCommand(CollectionManager collectionManager, Shower shower) {
+    public PrintUniqueChapterCommand(CollectionManager collectionManager) {
         super("print_unique_chapter", "prints unique values of chapter among all elements of collection");
         this.collectionManager = collectionManager;
-        this.shower = shower;
     }
 
     @Override
@@ -24,7 +22,7 @@ public class PrintUniqueChapterCommand extends AbstractCommand{
             if (!argument.isEmpty())
                 throw new WrongArgumentOfCommandException();
             Set<Chapter> chapterSet = collectionManager.uniqueChapters();
-            chapterSet.forEach(chapter -> shower.show(chapter));
+            chapterSet.forEach(Shower::show);
             return true;
         } catch (CollectionIsEmptyException e) {
             ConsoleManager.printError("Collection is empty");

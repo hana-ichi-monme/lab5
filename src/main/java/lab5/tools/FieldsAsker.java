@@ -25,6 +25,8 @@ public class FieldsAsker {
                 ConsoleManager.println("Enter a name");
 
                 name = scanner.nextLine().trim();
+                if (mode.equals("file"))
+                    ConsoleManager.println(name);
                 if (name.equals("")) throw new NotNullException();
                 break;
             } catch (NotNullException e) {
@@ -49,6 +51,8 @@ public class FieldsAsker {
                 ConsoleManager.println("Enter a X coordinate");
 
                 str = scanner.nextLine().trim();
+                if (mode.equals("file"))
+                    ConsoleManager.println(str);
                 x = Double.parseDouble(str);
                 break;
             } catch (NoSuchElementException e) {
@@ -74,6 +78,8 @@ public class FieldsAsker {
                 ConsoleManager.println("Enter a Y coordinate");
 
                 str = scanner.nextLine().trim();
+                if (mode.equals("file"))
+                    ConsoleManager.println(str);
                 y = Long.parseLong(str);
                 if (y > MAX_Y) {
                     throw new ExceedingTheLimitException();
@@ -102,15 +108,17 @@ public class FieldsAsker {
     }
     public Long askHealth() throws IncorrectInputInScriptException {
         String str;
-        Long health;
+        long health;
         while (true){
             int MIN_HEALTH = 0;
             try {
                 ConsoleManager.println("Enter a health");
 
                 str = scanner.nextLine().trim();
+                if (mode.equals("file"))
+                    ConsoleManager.println(str);
                 health = Long.parseLong(str);
-                if (health < MIN_HEALTH) {
+                if (health <= MIN_HEALTH) {
                     throw new ExceedingTheLimitException();
                 }
                 break;
@@ -141,8 +149,10 @@ public class FieldsAsker {
                 ConsoleManager.println("Enter a height");
 
                 str = scanner.nextLine().trim();
+                if (mode.equals("file"))
+                    ConsoleManager.println(str);
                 height = Float.parseFloat(str);
-                if (height < MIN_HEIGHT) {
+                if (height <= MIN_HEIGHT) {
                     throw new ExceedingTheLimitException();
                 }
                 break;
@@ -176,7 +186,9 @@ public class FieldsAsker {
             try {
                 ConsoleManager.println("Enter a category");
 
-                str = scanner.nextLine().trim();
+                str = scanner.nextLine().trim().toUpperCase();
+                if (mode.equals("file"))
+                    ConsoleManager.println(str);
                 category = AstartesCategory.valueOf(str);
                 break;
             } catch (NoSuchElementException e) {
@@ -204,7 +216,9 @@ public class FieldsAsker {
             try {
                 ConsoleManager.println("Enter a melee weapon");
 
-                str = scanner.nextLine().trim();
+                str = scanner.nextLine().trim().toUpperCase();
+                if (mode.equals("file"))
+                    ConsoleManager.println(str);
                 if (str.isEmpty())
                     throw new NotNullException();
                 weapon = MeleeWeapon.valueOf(str);
@@ -234,6 +248,8 @@ public class FieldsAsker {
                 ConsoleManager.println("Enter a chapter's name");
 
                 str = scanner.nextLine().trim();
+                if (mode.equals("file"))
+                    ConsoleManager.println(str);
                 if (str.equals(""))
                     throw new NotNullException();
                 break;

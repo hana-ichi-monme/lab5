@@ -60,7 +60,7 @@ public class FileManager {
                 Writer writer = new BufferedWriter(new FileWriter(new File(System.getenv().get(env))));
                 String jsonCollection = "[";
                 for (SpaceMarine marine: collection) {
-                    jsonCollection = jsonCollection.concat(mapper.writeValueAsString(collection.getFirst()) + ",");
+                    jsonCollection = jsonCollection.concat(mapper.writeValueAsString(marine) + ",");
                 }
                 jsonCollection = jsonCollection.substring(0, jsonCollection.length()-1) + "]";
                 writer.write(jsonCollection);

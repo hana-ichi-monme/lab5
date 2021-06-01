@@ -13,7 +13,6 @@ public class Run {
         Scanner scanner = new Scanner(System.in);
         FieldsAsker fieldsAsker = new FieldsAsker(scanner);
         CollectionManager collectionManager = new CollectionManager(fileManager);
-        Shower shower = new Shower();
         CommandManager commandManager = new CommandManager(
                 new AddCommand(collectionManager, fieldsAsker),
                 new AddIfMinCommand(collectionManager, fieldsAsker),
@@ -24,12 +23,12 @@ public class Run {
                 new HelpCommand(),
                 new InfoCommand(collectionManager),
                 new MaxByHealthCommand(collectionManager),
-                new PrintUniqueChapterCommand(collectionManager, shower),
+                new PrintUniqueChapterCommand(collectionManager),
                 new RemoveByIdCommand(collectionManager),
                 new RemoveFirstCommand(collectionManager),
                 new RemoveGreaterCommand(collectionManager, fieldsAsker),
                 new SaveCommand(collectionManager),
-                new ShowCommand(collectionManager, shower),
+                new ShowCommand(collectionManager),
                 new UpdateIdCommand(collectionManager, fieldsAsker)
         );
         ConsoleManager consoleManager = new ConsoleManager(commandManager, scanner, fieldsAsker);

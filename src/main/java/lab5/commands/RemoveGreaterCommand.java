@@ -24,6 +24,8 @@ public class RemoveGreaterCommand extends AbstractCommand{
         try {
             if (!argument.isEmpty())
                 throw new WrongArgumentOfCommandException();
+            if (collectionManager.collectionIsEmpty())
+                throw new CollectionIsEmptyException();
             collectionManager.removeGreater(new SpaceMarine(
                     fieldsAsker.askName(),
                     fieldsAsker.askCoordinates(),
